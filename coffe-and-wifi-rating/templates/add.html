@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Add a new cafe into the database</h1>
+
+      <!-- Flask Form -->
+      <form method="POST" action="{{ url_for('add_cafe') }}">
+        <!-- CSRF Token -->
+        {{ form.hidden_tag() }}
+
+        <!-- Cafe Name Field -->
+        <div class="mb-3">
+          <label for="cafe" class="form-label">Cafe Name</label>
+          {{ form.cafe(class="form-control", id="cafe") }}
+          {% if form.cafe.errors %}
+            <ul class="text-danger">
+              {% for error in form.cafe.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Location Field -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          {{ form.location(class="form-control", id="location") }}
+          {% if form.location.errors %}
+            <ul class="text-danger">
+              {% for error in form.location.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Opening Time Field -->
+        <div class="mb-3">
+          <label for="open_time" class="form-label">Opening Time</label>
+          {{ form.open_time(class="form-control", id="open_time") }}
+          {% if form.open_time.errors %}
+            <ul class="text-danger">
+              {% for error in form.open_time.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Closing Time Field -->
+        <div class="mb-3">
+          <label for="close_time" class="form-label">Closing Time</label>
+          {{ form.close_time(class="form-control", id="close_time") }}
+          {% if form.close_time.errors %}
+            <ul class="text-danger">
+              {% for error in form.close_time.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- WiFi Rating Field -->
+        <div class="mb-3">
+          <label for="wifi" class="form-label">WiFi Rating (1-5)</label>
+          {{ form.wifi(class="form-control", id="wifi") }}
+          {% if form.wifi.errors %}
+            <ul class="text-danger">
+              {% for error in form.wifi.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Power Rating Field -->
+        <div class="mb-3">
+          <label for="power" class="form-label">Power Rating (1-5)</label>
+          {{ form.power(class="form-control", id="power") }}
+          {% if form.power.errors %}
+            <ul class="text-danger">
+              {% for error in form.power.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Coffee Rating Field -->
+        <div class="mb-3">
+          <label for="coffee_rating" class="form-label">Coffee Rating (1-5)</label>
+          {{ form.coffee_rating(class="form-control", id="coffee_rating") }}
+          {% if form.coffee_rating.errors %}
+            <ul class="text-danger">
+              {% for error in form.coffee_rating.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mb-3">
+          {{ form.submit(class="btn btn-primary") }}
+        </div>
+      </form>
+
+      <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

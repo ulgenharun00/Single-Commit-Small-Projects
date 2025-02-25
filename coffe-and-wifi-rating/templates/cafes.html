@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Cafes{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>All Cafes</h1>
+
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cafe Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Open</th>
+            <th scope="col">Close</th>
+            <th scope="col">Coffee</th>
+            <th scope="col">Wifi</th>
+            <th scope="col">Power</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through cafes and render each row -->
+          {% for cafe in cafes %}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>  <!-- Display row number (1, 2, 3, ...) -->
+              <td>{{ cafe['name'] }}</td>  <!-- Display cafe name -->
+              <td><a href="{{ cafe['location'] }}" target="_blank">Location Link</a></td>  <!-- Location as link -->
+              <td>{{ cafe['open'] }}</td>  <!-- Display opening time -->
+              <td>{{ cafe['close'] }}</td>  <!-- Display closing time -->
+              <td>{{ cafe['coffee'] }}</td>  <!-- Display coffee rating -->
+              <td>{{ cafe['wifi'] }}</td>  <!-- Display wifi rating -->
+              <td>{{ cafe['power'] }}</td>  <!-- Display power outlet availability -->
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <p><a href="#">Return to index page</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
